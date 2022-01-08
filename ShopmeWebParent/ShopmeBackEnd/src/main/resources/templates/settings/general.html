@@ -20,7 +20,7 @@
 				<label class="col-sm-4 col-form-label">Site Logo: </label>
 				<div class="col-sm-8">
 
-					<img id="thumbnail" alt="Site Logo thumbnail" th:src="@{${S3_BASE_URL +SITE_LOGO}}" width="150" height="70" />
+					<img id="thumbnail" alt="Site Logo thumbnail" th:src="@{${S3_BASE_URL + SITE_LOGO}}" width="150" height="70" />
 					<input type="file" id="fileImage" name="fileImage" accept="image/png, image/jpeg" />
 
 				</div>
@@ -93,7 +93,7 @@
 
 			<div class="text-center">
 				<input type="submit" value="Save" class="btn btn-primary m-3" />
-				<input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel" />
+
 			</div>
 
 		</form>

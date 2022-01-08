@@ -27,10 +27,10 @@ import com.shopme.common.entity.IdBaseEntity;
 @Entity
 @Table(name = "products")
 public class Product  extends IdBaseEntity {
-	@Column(unique = true, length = 256, nullable = false)
+	@Column(unique = true, length = 255, nullable = false)
 	private String name;
 
-	@Column(unique = true, length = 256, nullable = false)
+	@Column(unique = true, length = 255, nullable = false)
 	private String alias;
 
 	@Column(length = 512, nullable = false, name = "short_description")
