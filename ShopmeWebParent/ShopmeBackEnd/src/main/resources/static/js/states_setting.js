@@ -171,9 +171,10 @@ function changeFormStateToSelectedState() {
 function loadStates() {
 	selectedCountryId = dropDownCountry4States.val().split("-")[0];
 
-	url = contextPath + "states/list_by_country/" + selectedCountryId;
+	url = contextPath + "states/list_states_by_country/" + selectedCountryId;
 
 	$.get(url, function(responseJSON) {
+	
 		dropDownState.empty();
 		$.each(responseJSON, function(index, state) {
 			optionalValue = state.id;

@@ -24,6 +24,7 @@ public class StateRestControll {
 	@GetMapping("states/list_states_by_country/{id}")
 	public List<StateDTO> listByCountry(@PathVariable("id") Integer countryId) {
 		List<StateDTO> listStateDTOs = new ArrayList<>();
+		
 		List<State> listStates = repo.findByCountryOrderByNameAsc(new Country(countryId));
 
 		listStates.forEach(state -> {
