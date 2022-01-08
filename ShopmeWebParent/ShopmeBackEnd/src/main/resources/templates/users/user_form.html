@@ -100,6 +100,9 @@
 	function checkEmailUnique(form) {
 		url = "[[@{/users/check-email}]]";
 		userId = $("#id").val();
+	   if( userId === ""){
+			userId = "0";
+		}
 		userEmail = $("#email").val();
 		csrfValue = $("input[name='_csrf']").val();
 		params = {id: userId, email: userEmail, _csrf: csrfValue};
