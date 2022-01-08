@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="fragments::page_head('Shipping Rate - Shopme Admin', 'none')" />
+
+
+<body>
+	<div class="container-fluid">
+		<div th:replace="navigation:: menu"></div>
+		<div>
+			<h2>Manager Shipping Rates </h2>
+			<a th:href="@{/shipping_rates/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"
+				title="Add a new shipping rate"></a>
+		</div>
+		<div th:replace="fragments :: search_form_and_message"></div>
+		<div class="full-details">
+			<table class="table table-bordered table-striped table-hover table-responsive-xl">
+				<thead class="thead-dark">
+					<tr>
+						<th th:replace="fragments::column_link('id', 'ID', 'none')" />
+						<th th:replace="fragments::column_link('country', 'Country', 'none')" />
+						<th th:replace="fragments::column_link('state', 'State', 'none')" />
+						<th th:replace="fragments::column_link('rate', 'Rate', 'none')" />
+						<th th:replace="fragments::column_link('days', 'Days', 'none')" />
+						<th th:replace="fragments::column_link('codSupported', 'COD Supported', 'none')" />
+						<th></th>
+				</thead>
+				<tbody>
+					<tr th:each="rate: ${shippingRates}">
+						<td>[[${rate.Id}]]</td>
+						<td>[[${rate.country.name}]]</td>
+						<td>[[${rate.state}]]</td>
+						<td>[[${rate.rate}]]</td>
+						<td>[[${rate.days}]]</td>
+						<td>
+							<div th:replace="shipping_rates/shipping_rates_fragment :: cod_support" />
+						</td>
+
+						<td>
+							<a class="fas fa-edit fa-2x icon-green" th:href="@{'/shipping_rates/edit/' + ${rate.id}}"
+								title="Edit this rate"></a>
+							&nbsp
+							<a class="fas fa-trash fa-2x icon-dark link-delete "
+								th:href="@{'/shipping_rates/delete/' + ${rate.id}}" th:rateId="${rate.id}"
+								title="Delete this rate"></a>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+
+
+		</div>
+		<div th:replace ="fragments :: pagination( 'shipping_rates')" />
+		<div th:replace ="fragments :: delete_confirmDialog('Delete Confirm')" />
+		<div th:replace="fragments :: footer" />
+
+	</div>
+<script type="text/javascript">
+
+		$(document).ready(function () {
+			$(".link-delete").on("click", function (e) {
+				e.preventDefault();
+				link = $(this);
+				//	alert($(this).attr("href"));
+				rateId = link.attr("rateId");
+				$("#yesButton").attr("href", link.attr("href"));
+				$("#confirmText").text(" Are you sure you want to delete the Rate ID: " + rateId + " ?");
+				$("#confirmModal").modal();
+			});
+
+
+		});
+		
+
+function clearFilter() {
+		window.location = "[[@{/shipping_rates}]]"; 
+}
+
+
+</script>
+</body>
+
+</html>

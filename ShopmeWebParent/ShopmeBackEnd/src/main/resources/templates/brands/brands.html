@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::page_head('Brands- Shopme Admin', 'none')"  />
+
+<body>
+	<div class="container-fluid">
+		<div th:replace="navigation:: menu"></div>
+
+
+		<div>
+			<h2>Manage Brands</h2>
+			<a th:href="@{/brands/new}" class="fas fa-folder-plus fa-2x icon-dark mr-2"
+				title="Add a new brand"></a>
+
+			<a th:href="@{/brands/export/csv}" class="fas fa-file-csv fa-2x icon-dark  mr-2" title="Export to CSV">
+			</a>
+
+		</div>
+
+
+		<div th:replace="fragments :: search_form_and_message" ></div>
+
+		<div >
+			<table class="table table-bordered table-striped table-hover table-responsive-xl">
+				<thead class="thead-dark">
+					<tr>
+						<th class="hideable-column ">ID</th >
+						<th>Logo</th>
+						<th>
+                           <th th:replace="fragments::column_link('name', 'Brand Name', 'tag')" />
+						</th>
+						<th class="hideable-column"> Categories </th >
+						<th></th>
+				</thead>
+				<tbody>
+					<tr th:each="brand: ${listBrands}">
+						<td class="hideable-column ">[[${brand.Id}]]</td>
+						<td>
+							<img th:src="@{${brand.logoPath} }" style="width: 100px" class="image-fluid" />
+						</td>
+						<td>[[${brand.name}]]</td>
+						<td class="  "> 
+						<th:block th:each="cat : ${brand.categories}" >
+					<span class="badge badge-secondary" th:text="${cat.name}" >  </span>
+						 </th:block>
+						</td >
+
+
+						<td>
+							<a class="fas fa-edit fa-2x icon-green" th:href="@{'/brands/edit/' + ${brand.id}}"
+								title="Edit this brand"></a>
+							&nbsp
+							<a  class="fas fa-trash fa-2x icon-dark link-delete "
+								th:href="@{'/brands/delete/' + ${brand.id}}" th:brandId="${brand.id}"
+								title="Delete this brand"></a>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+
+  	 <div th:replace ="fragments :: pagination('brands')" /> 
+		<div th:replace="fragments :: delete_confirmDialog('Delete Confirm')" />
+		
+		<div th:replace="fragments :: footer" />
+	</div>
+
+</body>
+<script type="text/javascript">
+  clearModulURL = "[[@{/brands}]]"; 
+
+	$(document).ready(function () {
+
+		$(".link-delete").on("click", function (e) {
+			e.preventDefault();
+			link = $(this);
+			brandId = link.attr("brandId");
+			$("#yesButton").attr("href", link.attr("href"));
+			$("#confirmText").text(" Are you sure you want to delete the  ID:" + brandId + " ?");
+			$("#confirmModal").modal();
+		});
+
+	});
+
+	function showModalDialog(title, message) {
+		$("#modalTitle").text(title);
+		$("#modalBody").text(message);
+		$("#modalDialog").modal();
+	}
+
+</script>
+<script type="text/javascript" th:src="@{/js/common_form.js}"> </script>
+
+</html>
