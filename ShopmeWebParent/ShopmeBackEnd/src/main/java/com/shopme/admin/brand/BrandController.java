@@ -44,9 +44,9 @@ public class BrandController {
 	public String listByPage(
 			@PagingAndSortingParam(listName = "listBrands", moduleURL = "/brands") PagingAndSortingHelper helper,
 			@PathVariable(name = "pageNum") int pageNum) {
-
+    	
 		service.listByPage(pageNum, helper);
-
+    	
 		return "brands/brands";
 	}
 

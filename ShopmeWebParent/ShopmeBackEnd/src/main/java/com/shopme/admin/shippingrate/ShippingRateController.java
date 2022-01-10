@@ -44,7 +44,7 @@ public class ShippingRateController {
 		model.addAttribute("rate",new ShippingRate());
 		model.addAttribute("pageTitle", "New Rate"); 
 		
-		return "/shipping_rates/shipping_rate_form";		
+		return "shipping_rates/shipping_rate_form";		
 	}
 	
 	@PostMapping("/shipping_rates/save")
@@ -71,7 +71,7 @@ public class ShippingRateController {
 			model.addAttribute("rate",rate);
 			model.addAttribute("pageTitle", "Edit Rate (" + id + ")"); 
 			
-			return "/shipping_rates/shipping_rate_form";
+			return "shipping_rates/shipping_rate_form";
 						
 		} catch (ShippingRateNotFoundException ex) {
 			ra.addFlashAttribute("message", ex.getMessage());

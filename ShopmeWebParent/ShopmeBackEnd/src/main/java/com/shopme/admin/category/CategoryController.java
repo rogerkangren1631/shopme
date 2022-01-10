@@ -32,6 +32,7 @@ public class CategoryController {
 		if(sortDir == null || sortDir.isEmpty() ) {
 			sortDir = "asc"; 
 		}
+		
 		return listByPage(1,sortDir, null,  model);
 	}
 	
@@ -52,7 +53,7 @@ public class CategoryController {
     public String listByPage( @PathVariable(name="pageNum") int pageNum,
     		@RequestParam("sortDir")  String sortDir,    	
     		 String keyword , 	Model model) {
-    	
+   	
     	if(sortDir == null || sortDir.isEmpty() ) {
 			sortDir = "asc"; 
 		}
@@ -80,7 +81,8 @@ public class CategoryController {
 		model.addAttribute("listCategories", listCategories);
 		model.addAttribute("reverseSortDir", reverseSortDir);
 		model.addAttribute("moduleURL", "/categories");
-		return "/categories/categories";
+		
+		return "categories/categories";
     }
 	
 	@GetMapping("/categories/new")

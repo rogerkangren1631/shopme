@@ -89,7 +89,7 @@ public class ProductController {
 		model.addAttribute("listBrands", listBrands);
 		model.addAttribute("pageTitle", "Create New Product");
 		model.addAttribute("numberOfExistingExtraImages", numberOfExistingExtraImages);
-		return "/products/product_form";
+		return "products/product_form";
 	}
 
 	@PostMapping("/products/save")
