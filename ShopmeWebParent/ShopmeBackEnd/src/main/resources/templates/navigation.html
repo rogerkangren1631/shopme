@@ -81,7 +81,7 @@
 								<a class="nav-link" th:href="@{/orders}"> Orders</a>
 							</li>
 						</th:block>
-						
+				<!--		
 						<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
 							<li class="nav-item">
 								<a class="nav-link" th:href="@{/report}"> Sales Report</a>
@@ -100,7 +100,7 @@
 								<a class="nav-link" th:href="@{/menus}"> Menus</a>
 							</li>
 						</th:block>
-
+                -->
 						<li class="nav-item  dropdown" sec:authorize="hasAuthority('Admin') ">
 							<a class="nav-link  dropdown-toggle" th:href="@{/settings}"> Settings</a>
 							<div class="dropdown-menu">
