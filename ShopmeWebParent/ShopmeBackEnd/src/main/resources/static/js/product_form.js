@@ -101,7 +101,6 @@ function checkNameUnique(form) {
 	params = { id: productId, name: productName, _csrf: csrfValue };
 
 	$.post(checkUniqueUrl, params, function(response) {
-		alert("response is " + response);
 		if (response == "OK") {
 			form.submit();
 		} else if (response == "Duplicated") {

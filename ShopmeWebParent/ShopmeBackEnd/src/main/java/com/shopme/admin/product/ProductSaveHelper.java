@@ -62,8 +62,12 @@ public class ProductSaveHelper {
 		for (int count = 0; count < detailNames.length; count++) {
 			String name = detailNames[count];
 			String value = detailValues[count];
-			Integer id = Integer.parseInt(detailIDs[count]);
-			if (id != 0) {
+			Integer id = 0;
+			
+			if( detailIDs[count] != null && !detailIDs[count].isEmpty()) {	
+				id = Integer.parseInt(detailIDs[count]);
+			}
+			if (id== null || id != 0) {
 				product.addDetail(id, name, value);
 			} else if (!name.isEmpty() && !value.isEmpty()) {
 				product.addDetail(name, value);
