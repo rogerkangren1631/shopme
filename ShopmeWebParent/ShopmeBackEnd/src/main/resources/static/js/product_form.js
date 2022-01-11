@@ -68,12 +68,12 @@ function addNextExtraImageSection(index) {
     `;
 	$("#divProductImages").append(htmlExtraImage);
 	$("#extraImageHeader" + (index - 1)).append(htmlLinkRemove);
-		extraImagesCount++;
+	extraImagesCount++;
 }
 
 function removeExtraImage(index) {
 	$("#divExtraImage" + index).remove();
-//	extraImagesCount--;
+	//	extraImagesCount--;
 }
 
 
@@ -92,12 +92,16 @@ function getCategories() {
 function checkNameUnique(form) {
 
 	productId = $("#id").val();
+	if (productId === "") {
+		productId = "0";
+	}
+
 	productName = $("#name").val();
 	csrfValue = $("input[name='_csrf']").val();
 	params = { id: productId, name: productName, _csrf: csrfValue };
-   
+
 	$.post(checkUniqueUrl, params, function(response) {
-            alert("response is " + response);
+		alert("response is " + response);
 		if (response == "OK") {
 			form.submit();
 		} else if (response == "Duplicated") {
