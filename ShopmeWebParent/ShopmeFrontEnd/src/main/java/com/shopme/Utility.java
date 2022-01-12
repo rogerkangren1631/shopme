@@ -23,7 +23,7 @@ public class Utility {
 		System.out.println("siteURL = " + siteURL );
 		System.out.println("ServletPath = " + request.getServletPath() );
 		
-		String baseURL = "http://localhost" ; 
+		String baseURL = "https://shopuswithren-frontend.herokuapp.com/" ; 
 		return baseURL + siteURL.replace(request.getServletPath(), "");
 	}
 	
