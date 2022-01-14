@@ -39,7 +39,7 @@ public class ForgotPasswordController {
 		
 		try {
 			String token = customerService.updateResetPasswordToken( email );
-			String link = Utility.getSiteURL(request) + "/reset_password?token=" + token;
+			String link = Utility.getSiteURL(request) + "reset_password?token=" + token;
 			sendEmail(link, email);
 			System.out.println("The link is  : '" + link + "' for the email " + email);
 			
