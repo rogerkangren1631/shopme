@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class MainControllerTest {
@@ -19,6 +20,7 @@ public class MainControllerTest {
 		assertEquals("index", controller.viewHomePage(), "Return view is wrong.");		
 	}
 
+	@DisplayName("Test ViewLoginPage for user without Authentication ")
 	@Test
 	public void testViewLoginPage() {
 		assertEquals("login", controller.viewLoginPage(), "Return view is wrong.");	
