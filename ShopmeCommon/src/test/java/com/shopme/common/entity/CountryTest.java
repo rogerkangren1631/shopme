@@ -11,16 +11,16 @@ public class CountryTest {
 	@BeforeEach
 	public void setUp() {
 		
-	country = new Country(300, "P.R.China", "ChinaTaiwan");
+	country = new Country(300, "China", "CN");
 	}
 	
 	@Test
 	public void testCountryConstructor() {
 		
 		assertAll("Test Props Set",
-				() ->assertEquals(country.getId(), 300, "ID Failed"),
-				() ->assertEquals(country.getName(), "P.R.China", "Name Failed" ),
-				() ->assertEquals(country.getCode(), "ChinaTaiwan", "Code Failed" ) );
+				() ->assertEquals(300,country.getId(),  "ID Failed"),
+				() ->assertEquals("China",country.getName(),  "Name Failed" ),
+				() ->assertEquals( "CN",country.getCode(), "Code Failed" ) );
 		
 	}
 	
