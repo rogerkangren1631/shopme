@@ -56,7 +56,7 @@ public class CustomerController {
 		sendVerificationEmail(request, customer);
 		model.addAttribute("pageTitle", "Registration Succeeded");
 		
-		return "/register/register_success";
+		return "register/register_success";
 	}
 
 	private void sendVerificationEmail(HttpServletRequest request, Customer customer) throws UnsupportedEncodingException, MessagingException  {
@@ -76,7 +76,7 @@ public class CustomerController {
 		helper.setSubject(subject);
 		
 		content = content.replace("[[name]]", customer.getFullName() ); 
-		String verifyURL = Utility.getSiteURL(request)+ "/verify?code="+customer.getVerificationCode(); 
+		String verifyURL = Utility.getSiteURL(request)+ "verify?code="+customer.getVerificationCode(); 
 		content = content.replace("[[URL]]", verifyURL); 
 
 		helper.setText(content, true);
