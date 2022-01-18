@@ -1,4 +1,4 @@
-# shopme
+# shopus-with-ren
 A  shopping website using Java, Spring Boot, Thymeleaf, Bootstrap, jQuery and MySQL database;
 deploying the application on Heroku cloud platform with file upload on Amazon S3;
 using  Spring OAuth for single sign on with Facebook and Google;
